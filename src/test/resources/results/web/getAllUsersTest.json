@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "login": "first_test_user",
+    "firstName": "first_name",
+    "lastName": "last_name",
+    "age": 18
+  },
+  {
+    "id": 2,
+    "login": "second_test_user",
+    "firstName": "first_name",
+    "lastName": "last_name",
+    "age": 19
+  },
+  {
+    "id": 3,
+    "login": "third_test_user",
+    "firstName": "first_name",
+    "lastName": "last_name",
+    "age": 20
+  },
+  {
+    "id": 4,
+    "login": "fourth_test_user",
+    "firstName": "first_name",
+    "lastName": "last_name",
+    "age": 21
+  }
+]
