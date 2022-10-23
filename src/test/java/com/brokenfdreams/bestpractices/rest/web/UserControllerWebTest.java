@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @Sql(
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD,
-        scripts = {"/scripts/schema.sql", "/scripts/user-controller-web-data.sql"}
+        scripts = {"/scripts/user-controller-web-data.sql"}
 )
 @SpringBootTest
 @AutoConfigureMockMvc
