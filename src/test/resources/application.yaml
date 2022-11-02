@@ -8,4 +8,4 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL94Dialect
   liquibase:
     change-log: classpath:/liquibase/db.master.yaml
-    enabled: true
+    enabled: false
