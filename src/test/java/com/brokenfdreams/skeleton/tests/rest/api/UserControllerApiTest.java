@@ -1,14 +1,12 @@
-package com.brokenfdreams.bestpractices.rest.web;
+package com.brokenfdreams.skeleton.tests.rest.api;
 
-import com.brokenfdreams.bestpractices.dto.UpdateUserDTO;
-import com.brokenfdreams.bestpractices.rest.RestTestUtils;
+import com.brokenfdreams.skeleton.tests.dto.UpdateUserDTO;
+import com.brokenfdreams.skeleton.tests.rest.RestTestUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,20 +15,19 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Sql(
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD,
-        scripts = {"/scripts/user-controller-web-data.sql"}
+        scripts = {"/scripts/schema.sql", "/scripts/user-controller-api-data.sql"}
 )
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerWebTest {
+class UserControllerApiTest {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    private static final String RESULTS_DIRECTORY_PATH = "results/web/";
+    private static final String RESULTS_DIRECTORY_PATH = "results/api/";
 
     private static final UpdateUserDTO UPDATE_USER_DTO = UpdateUserDTO.builder()
             .login("TEST_LOGIN")
@@ -60,41 +57,13 @@ class UserControllerWebTest {
         );
     }
 
-    @Test
-    public void getAllUsersTest() throws Exception {
-        String url = "/web/users";
-        String jsonPath = "getAllUsersTest.json";
-
-        RestTestUtils.performRequestAndAssertResult(mockMvc,
-                MockMvcRequestBuilders.get(url),
-                status().isOk(),
-                new TypeReference<List<UpdateUserDTO>>() {
-                },
-                RESULTS_DIRECTORY_PATH + jsonPath);
-    }
-
     @ParameterizedTest
     @MethodSource("getUserByIdTestParameters")
     public void getUserByIdTest(long userId, String jsonPath) throws Exception {
-        String url = "/web/users/user/" + userId;
+        String url = "/api/users/user/" + userId;
 
         RestTestUtils.performRequestAndAssertResult(mockMvc,
                 MockMvcRequestBuilders.get(url),
-                status().isOk(),
-                new TypeReference<UpdateUserDTO>() {
-                },
-                RESULTS_DIRECTORY_PATH + jsonPath);
-    }
-
-    @Test
-    public void createUserTest() throws Exception {
-        String url = "/web/users/user";
-        String jsonPath = "createUserTest.json";
-
-        RestTestUtils.performRequestAndAssertResult(mockMvc,
-                MockMvcRequestBuilders.post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(OBJECT_MAPPER.writeValueAsString(UPDATE_USER_DTO)),
                 status().isOk(),
                 new TypeReference<UpdateUserDTO>() {
                 },
@@ -114,15 +83,5 @@ class UserControllerWebTest {
                 new TypeReference<UpdateUserDTO>() {
                 },
                 RESULTS_DIRECTORY_PATH + jsonPath);
-    }
-
-    @ParameterizedTest
-    @ValueSource(longs = {1, 2, 3, 4})
-    public void deleteUserTest(long userId) throws Exception {
-        String url = "/web/users/user/" + userId;
-
-        RestTestUtils.performRequestAndReturnBody(mockMvc,
-                MockMvcRequestBuilders.delete(url),
-                status().isOk());
     }
 }

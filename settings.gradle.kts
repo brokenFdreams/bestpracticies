@@ -1,3 +1,1 @@
-
-rootProject.name = "best-practicies"
-
+rootProject.name = "tests"

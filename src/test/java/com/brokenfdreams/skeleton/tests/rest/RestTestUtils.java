@@ -1,8 +1,9 @@
-package com.brokenfdreams.bestpractices.rest;
+package com.brokenfdreams.skeleton.tests.rest;
 
-import com.brokenfdreams.bestpractices.dto.ErrorDTO;
+import com.brokenfdreams.skeleton.tests.dto.ErrorDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -61,7 +62,7 @@ public final class RestTestUtils {
                                                         ResultMatcher resultMatcher) throws Exception {
         String result = performRequestAndReturnBody(mockMvc, mockHttpServletRequestBuilder, resultMatcher);
 
-        assertEquals(
+        Assertions.assertEquals(
                 OBJECT_MAPPER.readValue(getJsonFile(jsonFilePath), ErrorDTO.class),
                 OBJECT_MAPPER.readValue(result, ErrorDTO.class)
         );

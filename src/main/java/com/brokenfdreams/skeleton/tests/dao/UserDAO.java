@@ -1,7 +1,7 @@
-package com.brokenfdreams.bestpractices.dao;
+package com.brokenfdreams.skeleton.tests.dao;
 
-import com.brokenfdreams.bestpractices.dto.UpdateUserDTO;
-import com.brokenfdreams.bestpractices.dto.UserDTO;
+import com.brokenfdreams.skeleton.tests.dto.UpdateUserDTO;
+import com.brokenfdreams.skeleton.tests.dto.UserDTO;
 import org.springframework.lang.NonNull;
 
 import java.util.List;

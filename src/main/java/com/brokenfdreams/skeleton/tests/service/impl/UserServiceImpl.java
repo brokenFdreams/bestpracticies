@@ -1,9 +1,9 @@
-package com.brokenfdreams.bestpractices.service.impl;
+package com.brokenfdreams.skeleton.tests.service.impl;
 
-import com.brokenfdreams.bestpractices.dao.UserDAO;
-import com.brokenfdreams.bestpractices.dto.UpdateUserDTO;
-import com.brokenfdreams.bestpractices.dto.UserDTO;
-import com.brokenfdreams.bestpractices.service.UserService;
+import com.brokenfdreams.skeleton.tests.dao.UserDAO;
+import com.brokenfdreams.skeleton.tests.dto.UpdateUserDTO;
+import com.brokenfdreams.skeleton.tests.dto.UserDTO;
+import com.brokenfdreams.skeleton.tests.service.UserService;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 

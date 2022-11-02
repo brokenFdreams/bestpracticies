@@ -1,4 +1,4 @@
-package com.brokenfdreams.bestpractices.dto;
+package com.brokenfdreams.skeleton.tests.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;

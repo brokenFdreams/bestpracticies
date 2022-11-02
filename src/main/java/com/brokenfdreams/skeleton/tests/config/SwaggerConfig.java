@@ -1,4 +1,4 @@
-package com.brokenfdreams.bestpractices.config;
+package com.brokenfdreams.skeleton.tests.config;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;

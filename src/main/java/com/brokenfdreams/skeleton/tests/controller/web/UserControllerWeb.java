@@ -1,8 +1,8 @@
-package com.brokenfdreams.bestpractices.controller.web;
+package com.brokenfdreams.skeleton.tests.controller.web;
 
-import com.brokenfdreams.bestpractices.dto.UpdateUserDTO;
-import com.brokenfdreams.bestpractices.dto.UserDTO;
-import com.brokenfdreams.bestpractices.service.UserService;
+import com.brokenfdreams.skeleton.tests.dto.UpdateUserDTO;
+import com.brokenfdreams.skeleton.tests.dto.UserDTO;
+import com.brokenfdreams.skeleton.tests.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

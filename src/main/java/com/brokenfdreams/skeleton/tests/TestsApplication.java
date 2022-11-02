@@ -1,13 +1,13 @@
-package com.brokenfdreams.bestpractices;
+package com.brokenfdreams.skeleton.tests;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BestPracticesApplication {
+public class TestsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BestPracticesApplication.class, args);
+        SpringApplication.run(TestsApplication.class, args);
     }
 
 }
