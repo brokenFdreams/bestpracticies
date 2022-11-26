@@ -3,7 +3,9 @@ package com.brokenfdreams.skeleton.tests.service.impl;
 import com.brokenfdreams.skeleton.tests.dao.UserDAO;
 import com.brokenfdreams.skeleton.tests.dto.UpdateUserDTO;
 import com.brokenfdreams.skeleton.tests.dto.UserDTO;
+import com.brokenfdreams.skeleton.tests.exception.UserNotFoundException;
 import com.brokenfdreams.skeleton.tests.service.UserService;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +30,11 @@ public class UserServiceImpl implements UserService {
     @NonNull
     @Override
     public UserDTO getUserById(long userId) {
-        return userDAO.getUserById(userId);
+        try {
+            return userDAO.getUserById(userId);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UserNotFoundException(userId);
+        }
     }
 
     @NonNull
@@ -43,13 +49,13 @@ public class UserServiceImpl implements UserService {
         if (userDAO.updateUser(userId, updateUserDTO)) {
             return userDAO.getUserById(userId);
         }
-        throw new RuntimeException("User not found");
+        throw new UserNotFoundException(userId);
     }
 
     @Override
     public void deleteUser(long userId) {
         if (!userDAO.deleteUser(userId)) {
-            throw new RuntimeException("User not found");
+            throw new UserNotFoundException(userId);
         }
     }
 }

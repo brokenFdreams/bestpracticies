@@ -48,6 +48,14 @@ class UserControllerApiTest {
         );
     }
 
+    public static Stream<Arguments> getUserByIdWithNotFoundTestParameters() {
+        return Stream.of(
+                Arguments.of(100L, "getUserByIdWithNotFoundTestWithId100.json"),
+                Arguments.of(101L, "getUserByIdWithNotFoundTestWithId101.json"),
+                Arguments.of(102L, "getUserByIdWithNotFoundTestWithId102.json")
+        );
+    }
+
     public static Stream<Arguments> updateUserTestParameters() {
         return Stream.of(
                 Arguments.of(1L, "updateUserTestWithId1.json"),
@@ -67,6 +75,17 @@ class UserControllerApiTest {
                 status().isOk(),
                 new TypeReference<UpdateUserDTO>() {
                 },
+                RESULTS_DIRECTORY_PATH + jsonPath);
+    }
+
+    @ParameterizedTest
+    @MethodSource("getUserByIdWithNotFoundTestParameters")
+    public void getUserByIdWithNotFoundTest(long userId, String jsonPath) throws Exception {
+        String url = "/web/users/user/" + userId;
+
+        RestTestUtils.performRequestAndAssertException(mockMvc,
+                MockMvcRequestBuilders.get(url),
+                status().isNotFound(),
                 RESULTS_DIRECTORY_PATH + jsonPath);
     }
 

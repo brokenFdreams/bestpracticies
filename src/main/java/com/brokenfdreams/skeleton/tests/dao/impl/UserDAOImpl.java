@@ -1,8 +1,8 @@
 package com.brokenfdreams.skeleton.tests.dao.impl;
 
+import com.brokenfdreams.skeleton.tests.dao.UserDAO;
 import com.brokenfdreams.skeleton.tests.dto.UpdateUserDTO;
 import com.brokenfdreams.skeleton.tests.dto.UserDTO;
-import com.brokenfdreams.skeleton.tests.dao.UserDAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.NonNull;

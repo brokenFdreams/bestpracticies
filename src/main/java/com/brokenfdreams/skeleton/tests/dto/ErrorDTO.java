@@ -1,4 +1,6 @@
 package com.brokenfdreams.skeleton.tests.dto;
 
-public class ErrorDTO {
+import org.springframework.lang.NonNull;
+
+public record ErrorDTO(@NonNull String message) {
 }

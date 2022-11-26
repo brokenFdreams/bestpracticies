@@ -19,8 +19,8 @@ public final class RestTestUtils {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public static String performRequestAndReturnBody(MockMvc mockMvc,
-                                      MockHttpServletRequestBuilder mockHttpServletRequestBuilder,
-                                      ResultMatcher resultMatcher) throws Exception {
+                                                     MockHttpServletRequestBuilder mockHttpServletRequestBuilder,
+                                                     ResultMatcher resultMatcher) throws Exception {
         return mockMvc.perform(mockHttpServletRequestBuilder)
                 .andDo(print())
                 .andExpect(resultMatcher)
@@ -46,7 +46,7 @@ public final class RestTestUtils {
     public static void performRequestAndAssertResultString(MockMvc mockMvc,
                                                            MockHttpServletRequestBuilder mockHttpServletRequestBuilder,
                                                            String jsonFilePath) throws Exception {
-        String resultString = performRequestAndReturnBody(mockMvc, mockHttpServletRequestBuilder, status().isOk());;
+        String resultString = performRequestAndReturnBody(mockMvc, mockHttpServletRequestBuilder, status().isOk());
 
         assertEquals(
                 OBJECT_MAPPER.readValue(
@@ -58,8 +58,8 @@ public final class RestTestUtils {
 
     public static void performRequestAndAssertException(MockMvc mockMvc,
                                                         MockHttpServletRequestBuilder mockHttpServletRequestBuilder,
-                                                        String jsonFilePath,
-                                                        ResultMatcher resultMatcher) throws Exception {
+                                                        ResultMatcher resultMatcher,
+                                                        String jsonFilePath) throws Exception {
         String result = performRequestAndReturnBody(mockMvc, mockHttpServletRequestBuilder, resultMatcher);
 
         Assertions.assertEquals(
